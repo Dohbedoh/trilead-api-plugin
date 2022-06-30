@@ -51,7 +51,7 @@
         <revision>1</revision>
         <changelist>999999-SNAPSHOT</changelist>
         <gitHubRepo>jenkinsci/trilead-api-plugin</gitHubRepo>
-        <jenkins.version>2.319</jenkins.version>
+        <jenkins.version>2.346.1</jenkins.version>
         <java.level>8</java.level>
     </properties>
 
@@ -73,7 +73,7 @@
       <dependencies>
         <dependency>
           <groupId>io.jenkins.tools.bom</groupId>
-          <artifactId>bom-2.319.x</artifactId>
+          <artifactId>bom-2.346.x</artifactId>
           <version>1451.v15f1fdb_772a_f</version>
           <type>pom</type>
           <scope>import</scope>
@@ -85,6 +85,28 @@
             <groupId>org.jenkins-ci</groupId>
             <artifactId>trilead-ssh2</artifactId>
             <version>build-217-jenkins-27</version>
+          <exclusions>
+            <exclusion>
+              <groupId>org.json</groupId>
+              <artifactId>json</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>com.google.crypto.tink</groupId>
+              <artifactId>tink</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>com.google.protobuf</groupId>
+              <artifactId>protobuf</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>net.i2p.crypto</groupId>
+              <artifactId>eddsa-0.3.0</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>org.connectbot.jbcrypt</groupId>
+              <artifactId>jbcrypt</artifactId>
+            </exclusion>
+          </exclusions>
         </dependency>
         <dependency>
             <groupId>org.kohsuke</groupId>
@@ -97,5 +119,16 @@
                 </exclusion>
             </exclusions>
         </dependency>
+      <dependency>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>ssh-credentials</artifactId>
+        <optional>true</optional>
+      </dependency>
+      <!-- test dependencies -->
+      <dependency>
+        <groupId>io.jenkins.plugins.mina-sshd-api</groupId>
+        <artifactId>mina-sshd-api-core</artifactId>
+        <scope>test</scope>
+      </dependency>
     </dependencies>
 </project>
